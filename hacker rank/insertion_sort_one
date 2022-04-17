@@ -15,36 +15,37 @@ vector<string> split(const string &);
  */
 
 
-// I have written only this function
+
+
 
 void insertionSort1(int n, vector<int> arr) {
     
     int num,size=arr.size();
-    // for (int i=size;i<size;i--){
+    
         num=arr[size-1];
-        for (int j=size-1;j>0;j--){
-            if (num<arr[j-1]){
+        for (int j=size-1;j>=0;j--){
+            
+             if (j==0){
+                 arr[j]=num;
+             }
+            else if (num<arr[j-1]){
                 arr[j]=arr[j-1];
-                if ((j-1)==0){
-                    arr[j-1]=num;
                 }
-            }
             else if (num>=arr[j-1]) {
                 arr[j]=num;
+                for (int k=0;k<size;k++){
+                    cout <<arr[k]<<" ";
+                }
+                break; 
             }
+            
+            
             for (int k=0;k<size;k++){
                     cout <<arr[k]<<" ";
                 }
                 cout <<endl;
         }
     }
-
-
-
-
-
-
-
 
 
 
