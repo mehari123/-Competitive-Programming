@@ -10,6 +10,14 @@ import java.util.stream.*;
 import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toList;
 
+
+
+
+
+
+
+
+
 class Result {
 
     /*
@@ -21,21 +29,32 @@ class Result {
 
     public static List<Integer> countingSort(List<Integer> arr) {
     // Write your code here
-        int size=arr.size();
-       List<Integer> result = Arrays.asList(new Integer[size]);
-       for (int i=0;i<size;i++){
+         int size=arr.size();
+         List<Integer> result = Arrays.asList(new Integer[100]);
+        if (size<=1000000 && size>=0){  
+       for (int i=0;i<100;i++){
            result.set(i,0);
-       }
-        for (int i=0;i<size;i++){
+       } 
+        for (int i=0;i<size;i++){ 
             int num=arr.get(i);
             result.set(num,result.get(num)+1);
+         }
         }
-        return result;
-    }
-    
-    
-
+            return result;
+        }
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 public class Solution {
     public static void main(String[] args) throws IOException {
