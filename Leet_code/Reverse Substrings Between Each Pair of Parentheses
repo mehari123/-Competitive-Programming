@@ -1,0 +1,22 @@
+class Solution:
+    def reverseParentheses(self, s: str) -> str:
+        List=[]
+        i=0
+        while len(s)>i:
+            if s[i]==")":
+                List2=[]
+                while List[len(List)-1]!="(":
+                    List2.append(List.pop())
+                else:
+                    x=List.pop()
+                    j=0
+                    for l in List2:
+                        List.append(l)
+            else:
+                 List.append(s[i])
+            i+=1
+        r=""       
+        for t in List:
+            r+=t
+        
+        return r 
