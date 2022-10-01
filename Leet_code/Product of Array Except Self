@@ -1,0 +1,29 @@
+class Solution:
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        j=len(nums)-1
+        i=0
+        List=[0]*len(nums)
+        List1=[1]*len(nums)
+        List2=[1]*len(nums)
+        while i<len(nums) and j>=0:
+            if (j<=i and i<len(nums) and j>=0):
+                if (i==(len(nums)-1)):
+                    List[i]=List1[i-1]
+                    List[j]=List2[j+1]
+                else:
+                    List[i]=List1[i-1]*List2[i+1]
+                    List[j]=List1[j-1]*List2[j+1]
+                 
+            if (j==len(nums)-1):
+                
+                List1[i]=List1[i]*nums[i]
+                List2[j]=List2[j]*nums[j]
+              
+            else:
+                List1[i]=List1[i-1]*nums[i]
+                List2[j]=List2[j+1]*nums[j]
+            
+          
+            i+=1
+            j-=1
+        return List
