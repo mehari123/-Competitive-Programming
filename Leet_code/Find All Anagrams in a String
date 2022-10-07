@@ -1,0 +1,28 @@
+class Solution:
+    def findAnagrams(self, s: str, p: str) -> List[int]:
+        str1=p
+        anagram=[]
+        i=0
+        start_index=0
+        remain=0
+        while i<len(s):
+            if len(str1)==0:
+                anagram.append(start_index)
+                remain=0
+                str1=s[start_index]
+                start_index+=1
+            if s[i] in str1:
+                if len(str1)==len(p):
+                    start_index=i
+                str1=str1.replace(s[i],"",1)
+                if ((len(str1)==0) and ((len(s)-1)==i)):
+                    
+                    anagram.append(start_index)
+            elif s[i] not in p:
+                str1=p
+            elif ((s[i] in p) and (s[i] not in str1)):
+                start_index+=1+remain
+        
+            i+=1
+       
+        return anagram
