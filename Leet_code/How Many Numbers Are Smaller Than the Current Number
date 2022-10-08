@@ -1,0 +1,11 @@
+class Solution:
+    def smallerNumbersThanCurrent(self, nums: List[int]) -> List[int]:
+        count=0
+        list1=[]
+        for l in nums:
+            for j in nums:
+                if j<l:
+                    count+=1
+            list1.append(count)
+            count=0
+        return list1
