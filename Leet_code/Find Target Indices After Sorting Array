@@ -1,0 +1,17 @@
+class Solution:
+    def targetIndices(self, nums: List[int], target: int) -> List[int]:
+        list1=[]
+        list2=[]
+        list3=[]
+        for l in nums:
+            if (l>target):
+                continue
+            elif l<target:
+                list1.append(l)
+            elif l==target:
+                list2.append(l)
+        i=0
+        while i<len(list2):
+            list3.append(i+len(list1))
+            i+=1
+        return list3
