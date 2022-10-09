@@ -1,0 +1,29 @@
+class Solution:
+    def kClosest(self, points: List[List[int]], k: int) -> List[List[int]]:
+        point_dist=[]
+        for l in points:
+            dist=(l[0]*l[0])+(l[1]*l[1])
+            point_dist.append(dist)
+        min1=point_dist[0]
+        min_list=[]
+        l=0
+        s=0
+        g=0
+        while l<k:
+            s=l
+            while s<len(points):
+                if (point_dist[l]>point_dist[s]):
+                    temp=point_dist.pop(l)
+                    point_dist.insert(l,temp)
+                    point_dist.insert(l,point_dist.pop(s))
+                    point_dist.pop(l+1)
+                    point_dist.insert(s,temp)
+                    temp1=points.pop(l)
+                    points.insert(l,temp1)
+                    points.insert(l,points.pop(s))
+                    points.pop(l+1)
+                    points.insert(s,temp1)
+                s+=1
+            min_list.append(points[l])
+            l+=1
+        return min_list
