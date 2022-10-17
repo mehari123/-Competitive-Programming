@@ -1,0 +1,18 @@
+class Solution:
+    def numIdenticalPairs(self, nums: List[int]) -> int:
+        dict1={}
+        dict2={}
+        i=0
+        count=2
+        while i<len(nums):
+            if nums[i] not in dict1.keys():
+                dict1[nums[i]]=0
+                dict2[nums[i]]=0
+            elif nums[i] in dict1.keys() and dict2[nums[i]]==0:
+                dict1[nums[i]]+=1
+                dict2[nums[i]]=2
+            elif nums[i] in dict1.keys() and dict2[nums[i]]>0:
+                dict1[nums[i]]+=dict2[nums[i]]
+                dict2[nums[i]]+=1
+            i+=1
+        return sum(dict1.values())
