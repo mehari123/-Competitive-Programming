@@ -1,0 +1,21 @@
+class Solution:
+    def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        find_g=len(nums2)
+        i=0
+        j=0
+        greater=-1
+        answer=[]
+        while i<len(nums1):
+            while j<len(nums2):
+                if nums1[i]==nums2[j]:
+                    find_g=j
+                if j>find_g:
+                    if nums1[i]<nums2[j]:
+                        greater=nums2[j]
+                        break
+                j+=1
+            answer.append(greater)
+            greater=-1
+            j=0
+            i+=1
+        return answer
