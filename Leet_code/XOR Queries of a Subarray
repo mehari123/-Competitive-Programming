@@ -1,0 +1,10 @@
+class Solution:
+    def xorQueries(self, arr: List[int], queries: List[List[int]]) -> List[int]:
+        result = []
+        sum_xor = [0] * (len(arr) + 1)
+        for i in range(len(arr)):
+            sum_xor[i + 1] = sum_xor[i] ^ arr[i]
+        for j in range(len(queries)):
+            left, right = queries[j]
+            result.append(sum_xor[right + 1] ^ sum_xor[left])
+        return result
