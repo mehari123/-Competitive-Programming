@@ -1,0 +1,16 @@
+class Solution:
+    def chalkReplacer(self, chalk: List[int], k: int) -> int:
+        i=0
+        j=0
+        list2=[]
+        sum1=0
+        sum2=sum(chalk)
+        while sum1<=k:
+            if sum2+sum1<k:
+                sum1+=sum2
+            else:
+                j=i%len(chalk)
+                sum1+=chalk[j]
+                list2.append(j)
+                i+=1
+        return j
