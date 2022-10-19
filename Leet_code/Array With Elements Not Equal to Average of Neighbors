@@ -1,0 +1,17 @@
+class Solution:
+    def rearrangeArray(self, nums: List[int]) -> List[int]:
+        nums1=nums
+        i=1
+        while i<len(nums)-1:
+            if ((nums1[i-1]+nums1[i+1])/2)==nums1[i]:
+                temp=nums1[i]
+                nums1[i]=nums1[i+1]
+                nums[i+1]=temp
+                revers=i
+                while ((nums1[revers]+nums1[revers-2])/2)==nums1[revers-1]:
+                    temp=nums1[revers]
+                    nums1[revers]=nums1[revers-1]
+                    nums[revers-1]=temp
+                    revers-=1
+            i+=1
+        return nums1
