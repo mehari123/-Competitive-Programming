@@ -7,48 +7,46 @@ class Solution:
         uncommented.append([])
         for index,src in enumerate(source):
 
-
                 if "/*" not in src and "//" not in src and  "*/" not in src and commented==False:
                         uncommented[index1].append(src)
                         uncommented.append([])
                         index1+=1
 
                 else:
-                  
-                    sliced_s=src.split(" ")
-                    size_s=len(sliced_s)
 
-                    for index2,sliced in enumerate(sliced_s):
-                        
                         if commented==False:
+                            if "/*/" in src:
+                                src3=src.split("/*/")
+                                src=src3[0]+src[1]
+                            if "/**/" in src:
+                                src3=src.split("/**/")
+                                src=src3[0]+src3[1]
 
-                            if "//" in sliced:
+                            if "//" in src:
 
-                                src1=sliced.split("//")
+                                src1=src.split("//")
                                 uncommented[index1].append(src1[0])
                                 uncommented.append([])
                                 index1+=1
-                                break
-                
-                            elif "/*" in sliced:
+    
+                            elif "/*" in src:
                        
-                                src1=sliced.split("/*")
+                                src1=src.split("/*")
                                 uncommented[index1].append(src1[0])
                                 commented=True
-
-                            else:
-                                if size_s-1==index2:
-                                    uncommented[index1].append(sliced)
+                                if "*/" in src1[1]:
+                                    src2=src1[1].split("*/")
+                                    uncommented[index1].append(src2[1])
                                     uncommented.append([])
                                     index1+=1
-                                else:
+                                    commented=False
+                            else:
+                                    uncommented[index1].append(src)
+                                    uncommented.append([])
+                                    index1+=1
 
-                                    if sliced=="":
-                                        uncommented[index1].append(" ")
-                                    uncommented[index1].append(sliced)
-
-                        elif "*/" in sliced:
-                            src2=sliced.split("*/")
+                        elif "*/" in src:
+                            src2=src.split("*/")
                             # return src2[1]
                             uncommented[index1].append(src2[1])
                             uncommented.append([])
@@ -66,6 +64,11 @@ class Solution:
                 source_code.append(line)
             
         return  source_code
+                
+                        
+
+
+        
                 
                         
 
