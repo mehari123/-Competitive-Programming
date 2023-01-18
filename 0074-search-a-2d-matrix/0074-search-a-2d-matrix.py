@@ -27,8 +27,6 @@ class Solution:
                 return False
             row_pointer+=1
             row2_pointer-=1
-            
-        return False
                     
                 
         
