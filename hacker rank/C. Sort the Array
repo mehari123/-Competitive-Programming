@@ -1,0 +1,64 @@
+size1=int(input())
+array=list(map(int,input().split()))
+
+decreasing=0
+f_start=1
+f_end=1
+start=0
+end=0
+num=1
+increasing=0
+while num<len(array):
+    
+    if decreasing==0:
+        if array[num-1]<array[num]:
+            f_start=start+1
+            f_end=num
+            start+=1
+            
+        elif array[num-1]>array[num]:
+            decreasing+=1
+            f_start=start+1
+            f_end=num+1
+            if start==0:
+                increasing=1
+    elif increasing==1:
+        if array[num-1]<array[num]:
+            start+=1
+        elif array[num-1]>array[num]:
+            decreasing+=1
+    elif decreasing==1:
+        
+        if array[num-1]>array[num]:
+            end+=1
+            f_end=num+1
+        elif array[num-1]<array[num]:
+            f_end=num+1
+            decreasing+=1
+    elif decreasing==2:
+        break
+    num+=1
+   
+index1=f_start-1
+index2=f_end-1
+sorted1=True
+
+if decreasing==1:
+    while index1<index2:
+        array[index1],array[index2]=array[index2],array[index1]
+        index1+=1
+        index2-=1
+ 
+    index=0
+    while index<len(array):
+        if array[index-1]>array[index]:
+            sorted1=False
+        index+=1
+        
+    
+if decreasing<2 and sorted1:
+    print("Yes")
+    print(f_start,f_end)
+else:
+    print("No")
+          
