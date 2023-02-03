@@ -10,33 +10,31 @@ class Solution:
         :type node: ListNode
         :rtype: void Do not return anything, modify node in-place instead.
         """
-        
         count=0
         dummy=node
+        
         while dummy:
             count+=1
             dummy=dummy.next
             if count>=3:
                 break
+                
         if count==2:
+            
             node.val=node.next.val
             node.next=None
-            print(node)
+            
         else:
-            while node:  
+            
+            while node:
+                
                 node.val=node.next.val
                 node=node.next
                 count+=1
+                
                 if node.next.next==None:
                     node.val=node.next.val
                     node.next=None
                     break
-                
-            
-        # node=None
-    
-        # node=node.next
-        # print(node.val)
-        # print(node.next)
         
         
