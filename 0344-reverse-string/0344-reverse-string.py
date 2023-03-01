@@ -3,9 +3,15 @@ class Solution:
         """
         Do not return anything, modify s in-place instead.
         """
-        left=0
-        right=len(s)-1
-        while left<right:
-            s[left],s[right]=s[right],s[left]
-            left+=1
-            right-=1
+        
+        def reveerse(self,s,left,right) :
+            
+            
+            if left<right:
+                s[left],s[right]=s[right],s[left]
+                reveerse(self,s,left+1,right-1)
+            else:
+                
+                return s
+                
+        reveerse(self,s,0,len(s)-1)
