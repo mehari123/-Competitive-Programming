@@ -15,30 +15,33 @@ class Solution:
             
             if node:
                 
-                if node.left==None and node.val > val:
+                if node.val > val:
+                    
+                    if node.left==None:
+                    
+                        new_node = TreeNode(val,None,None)
 
-                    new_node = TreeNode(val,None,None)
+                        node.left = new_node
 
-                    node.left = new_node
+                        return 
+                    
+                    insertNode(node.left,val)
+                    return
+                    
+                    
+                else :
+                    
+                    if node.right == None:
+                        
 
-                    return node
+                        new_node = TreeNode(val,None,None)
 
-                elif node.right == None  and node.val < val:
+                        node.right = new_node
 
-                    new_node = TreeNode(val,None,None)
+                        return 
+                    insertNode(node.right,val)
+                    return
 
-                    node.right = new_node
-
-                    return node 
-
-
-                elif node.val > val:
-
-                    return insertNode(node.left,val)
-                else:
-
-                    return insertNode(node.right,val)
-            
         insertNode(self.root,val)
         
         return self.root
