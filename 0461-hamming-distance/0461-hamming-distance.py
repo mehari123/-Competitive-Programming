@@ -4,6 +4,7 @@ class Solution:
         
         diff = x ^ y 
         count = 0
+        
         while diff > 0 :
             
             mod = diff % 2
