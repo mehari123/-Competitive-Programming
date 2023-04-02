@@ -1,11 +1,17 @@
 class Solution:
     def missingNumber(self, nums: List[int]) -> int:
         
-        nums2 = [i for i in range(len(nums)+1)]
-        num1= 0
+        nums1 = [-1]* (len(nums) + 1)
         
-        for n in nums2:num1 ^= n
+        
+        for num in nums:
             
-        for j in nums: num1 ^= j
+            nums1[num]= num
+            
         
-        return num1
+        for index,n in enumerate(nums1):
+            print(index,n)
+            if index != n:
+                return index
+            
+            
