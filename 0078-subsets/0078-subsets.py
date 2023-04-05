@@ -1,26 +1,22 @@
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
         
-        Sub =[[]]
-        def subset(index,temp):
+        
+        power = []
+        
+        def subset(sub ,index ):
             
-            if index >= len(nums):
+            if index == len(nums):
                 
+                power.append(sub[::])
                 return 
-            
-            temp.append(nums[index])
-            
-            Sub.append(temp[::])
-            
-            subset(index+1,temp)
-            temp.pop()
-            subset(index+1,temp)
-            
-            return
+           
+          
+            sub.append(nums[index])
+            subset(sub,index + 1)
+            sub.pop()
+            subset(sub,index + 1)
+                
         
-        subset(0,[])
-        return Sub
-        
-            
-            
-        
+        subset([] , 0)
+        return power
