@@ -46,43 +46,4 @@ class Solution:
                     return False
                 
         return True
-                
-                
-   
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-#         for key,value in adjecency.items():
-            
-#             if color[key] == -1:
-#                 color[key] == 1
-                
-#             for node in adj:
-
-#                 if color[node] == -1:
-
-#                     adjecency[dis[0]].add(dis[1])
-
-#                 elif color[node] !=  color[item]:
-
-#                     continue
-
-#                 else:
-
-#                     return False
-                
-#         return True
-            
-            
+     
