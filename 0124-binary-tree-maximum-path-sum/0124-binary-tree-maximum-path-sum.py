@@ -12,16 +12,12 @@ class Solution:
             if not root:
                 return -float('inf')
             
-            if not root.left and not root.right:
-                return root.val
-            
             left = dfs(root.left)
             right = dfs(root.right)
             
             self.answer = max([self.answer, left, right, root.val, left+right+root.val])
             return max(left + root.val, right+root.val, root.val)
             
-        
         return max(dfs(root), self.answer)
         
         
