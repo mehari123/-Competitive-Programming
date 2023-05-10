@@ -26,7 +26,7 @@ class Solution:
         ans = []
         while que:
             
-            for _ in range(len(que)):
+            # for _ in range(len(que)):
                 
                 q = que.popleft()
                 ans.append(q)
