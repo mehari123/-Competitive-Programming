@@ -1,45 +1,36 @@
 class Solution:
     def eventualSafeNodes(self, graph: List[List[int]]) -> List[int]:
-        
-        
-        indegree = defaultdict(int)
-        graph2 = defaultdict(list)
         independ = set()
-        
-        for index,g in enumerate(graph):
+        visited = {}
+        def dfs(i):
             
-            for i in g:
+            visited[i] = False
+            for node in graph[i]:
                 
-                graph2[i].append(index)
-                independ.add(index)
-                indegree[index] += 1
+                if node in visited:
+                    
+                    if not visited[node]:
+                        
+                        return False
+                    
+                    continue
+                    
+                elif not dfs(node):
+                    
+                    visited[node] = False
+                    return False
                 
-        independent = []
+            visited[i] = True
+            return True
+        
+        answer = []
         for i in range(len(graph)):
             
-            if i not in independ:
+            if dfs(i):
                 
-                independent.append(i)
+                answer.append(i)
                 
-        
-        que = deque(independent)
-        ans = []
-        while que:
-            
-            for _ in range(len(que)):
-                
-                q = que.popleft()
-                ans.append(q)
-                childes = graph2[q]
-                for child in childes:
-                    
-                    indegree[child] -= 1
-                    
-                    if indegree[child] == 0:
-                        
-                        que.append(child)
-                        
-        return sorted(ans)
+        return sorted(answer)
                 
                 
             
