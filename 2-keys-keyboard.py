@@ -1,45 +1,24 @@
 import math
 class Solution:
     def minSteps(self, n: int) -> int:
-        
-        def isPrime(n):
-            
-            if n <= 3:
-                
-                return n > 1
-            
-            if n % 2 == 0 or n % 3 == 0:
-                
-                return True
-            
-            i = 1
-            
-            while i < math.sqrt(n):
-                
-                if n % i == 0 :
-                    
-                    return True
-                
-                i += 1
-                
-            return False
-        
-        
-        operation_count = 0
-        index = 2
-        
-        while index <= n:
-            
-            if  (index > 2 and index % 2 != 0) or index <= 2:
-                
-                if isPrime(index) :
 
-                    if n % index == 0:
+        operation = [0 for i in range(n+1)]
 
-                        operation_count += index
-                        n //= index
-                        index = 1
+        for j in range(2,n+1):
 
-            index += 1
-            
-        return operation_count
+            if j % 2 == 0:
+
+                operation[j] = operation[j//2] + 2
+
+            elif j % 2 != 0:
+
+                r = j // 2
+                while r > 0:
+
+                    if j % r == 0:
+
+                        operation[j] = operation[r] + j // r
+                        break
+                    r -= 1
+        print(operation)
+        return operation[n]
