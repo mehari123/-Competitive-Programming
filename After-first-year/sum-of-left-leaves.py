@@ -7,32 +7,21 @@
 class Solution:
     def sumOfLeftLeaves(self, root: Optional[TreeNode]) -> int:
 
-        left_sum = 0
-        def sumleft(node,side):
+        sum1 = 0
 
-            left_sum = 0
-            if not node.left  and  not node.right and side == "L":
+        def sumleft(root):
 
-                return node.val
+            if not root:
 
-            elif not node.left  and  not node.right and side == "R":
+                return 
 
-                return 0
+            nonlocal sum1
+            if root.left and (root.left.left == None) and (root.left.right == None):
 
-            elif node.left and node.right:
+                sum1 += root.left.val
 
-                left_sum += sumleft (node.left,"L") + sumleft (node.right,"R")
-
-            elif node.left and not node.right:
-
-                left_sum += sumleft(node.left,"L")
-
-            elif node.right and not node.left:
-
-                left_sum += sumleft(node.right,"R")
-
-            return left_sum
-
-        
-        return sumleft(root,"R")
+            sumleft(root.left)
+            sumleft(root.right)
+        sumleft(root)
+        return sum1
         
